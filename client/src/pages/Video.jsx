@@ -121,7 +121,7 @@ const Video = () => {
   const { currentVideo } = useSelector(state => state.video);
   const dispatch = useDispatch();
   const path = useLocation().pathname.split("/")[2];
-  const [channel, setChannel] = useState([]);
+  const [channel, setChannel] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -160,9 +160,9 @@ const Video = () => {
 
   //TODO: DELETE VIDEO FUNCTIONALITY
 
-  return (
+  return  (
 //    <></>
-    <Container>
+      currentVideo && (<Container>
       <Content>
         <VideoWrapper>
           <VideoFrame src={currentVideo.videoUrl} controls />
@@ -218,7 +218,7 @@ const Video = () => {
       </Content>
       <Recommendation tags={currentVideo.tags} />
     </Container>
-  );
+  ));
 };
 
 export default Video;
